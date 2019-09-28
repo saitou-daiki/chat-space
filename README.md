@@ -23,6 +23,8 @@ Things you may want to cover:
 
 * ...
 
+
+
 ## chatspaceのDB設計
 
 
