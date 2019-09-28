@@ -25,6 +25,7 @@ Things you may want to cover:
 
 ## chatspaceのDB設計
 
+
 ## groups_usersテーブル
 |Column|Type|Options|
 |------|----|-------|
