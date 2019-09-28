@@ -53,7 +53,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|
-|image|string|
+|image|string|null: false|
 |user_id|integer|null: false, foreign_key: ture|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
