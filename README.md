@@ -63,8 +63,7 @@ Things you may want to cover:
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_id||integer|null: false, foreign_key: ture|
-|user_id|integer|null: false, foreign_key: true|
+|groupname|integer|null: false, foreign_key: ture|
 ### Association
 has_many :group_users
 has_many :users, through: :group_users
