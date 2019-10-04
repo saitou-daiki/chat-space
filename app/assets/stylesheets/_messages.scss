@@ -1,0 +1,167 @@
+.flash-box {
+  color: while;
+  background-color: #38aef0;
+  color: white;
+  text-align: center;
+  width: 100vw;
+}
+.chat-side {
+  height: 100%;
+  width: 300px;
+  float: left;
+  background-color: pink;
+  &__side-header {
+    background-color: #253141;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    &__box{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    height: 24px;
+    position: relative;
+      &__saitou{
+        font-size: 16px;
+        float: left;
+      }
+      &__2{
+    &__fa{
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+      }
+      &__1{
+        position: absolute;
+         right: 25px;
+       &__fa{
+         display: inline-block;
+         font: normal normal normal 14px/1 FontAwesome;
+         font-size: inherit;
+         text-rendering: auto;
+         -webkit-font-smoothing: antialiased;
+
+       }
+     }
+    }     
+  } 
+  &__side-center {
+    height: calc(100vh - 100px);
+    background-color: #2f3e51;
+    padding: 20px 20px 0;
+    overflow: scroll;
+    &__text2{
+      padding-top: 20px;
+      font-size: 15px;
+      padding-bottom: 5px;
+    }
+    &__text3{
+
+      font-size: 11px;
+      padding-bottom: 40px;
+    }
+  }
+}
+.chat-main {
+  position: relative;
+  height: 100%;
+  width: calc(100vw - 300px);
+  float: left;
+  background-color: white;
+  &__main-header {
+    height: 100px;
+    padding: 0 40px;
+    border-bottom: solid 1px #eeeeee;
+    &__wrapper{
+      &__test{
+
+      font-size: 20px;
+      }
+      &__name{
+        margin-top:15px;
+      font-size: 12px;
+      }
+    }
+    &__edit{
+      margin-top: 28px;
+    
+      float: right;
+      line-height: 40px;
+      padding: 0 20px;
+      color: black;
+      border: solid 1px black;
+    }
+
+}
+
+  &__messages{
+    height: 405px;
+    padding: 46px 40px;
+    background-color: #fafafa;
+    overflow: scroll;
+    &__text2{
+      font-size: 12px;
+    }
+    &__text3{
+      padding-top: 10px;
+      font-size: 12px;
+      padding-bottom: 40px;
+    }
+  }
+    &__form{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 1060px;
+    height: 50px;
+    padding: 20px 40px;
+    background-color: gray;
+    position: relative;
+    &__input{
+    position: relative;
+    width: 945px;
+    background: white;
+    height: 50px;
+    &__text{
+      height: 50px;
+      width: 920px;
+      padding-right: 10px;
+      padding-left: 10px;
+      color: #434a54;
+      border-style: none;
+      &__image{
+        font-size: 1.3rem;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        &__fa{
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+    }
+
+    &__send{
+      float: right;
+      width: 100px;
+      height: 50px;
+      padding: 0 30px;
+      margin-left: 15px;
+      background-color: #38aef0;
+      color: white;
+      cursor: pointer;
+
+    }
+
+}
+}
