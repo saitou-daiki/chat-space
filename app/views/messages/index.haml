@@ -1,39 +1,68 @@
-.flash-box
-  チャットグループを作成しました
-.chat-side
-  .chat-side__side-header
-    .chat-side__side-header__box
-      .chat-side__side-header__box__saitou
-        saitou
-      .chat-side__side-header__box__1
-        %i.fa.fa-edit
-      .chat-side__side-header__box__2
-        %i.fa.fa-cog
-  .chat-side__side-center
-    .chat-side__side-center__text2
-      text2
-    .chat-side__side-center__text3
-      text3
-.chat-main
-  .chat-main__main-header
-    .chat-main__main-header__edit 
-      %P edit
-    .chat-main__main-header__wrapper
-      .chat-main__main-header__wrapper__test
-        %br
-        %p test 
-      .chat-main__main-header__wrapper__name
-        %P name
+ 
+-# .flash-box
+-#   チャットグループを作成しました
 
-  .chat-main__messages
-    .chat-main__messages__text2
-      text2
-    .chat-main__messages__text3
-      text3
-  .chat-main__form
-    %input.chat-main__form__send{data: { disable: {with: "Send"}}, name: "commit", type: "submit", value: "Send"}/
+.side-bar
+  .header
+    .header__name
+      saitou
+    %u.header__lists
+      
+      %i.list
+        = link_to "#" do
+          = fa_icon 'edit'
+      %i.icon
+        = link_to "#" do
+          = fa_icon 'cog'
+     
+  .groups
+    .group
+      .group__name
+        text2
+      .group__message 
+        text3
 
-    .chat-main__form__input
-      .chat-main__form__input__text__image
+
+
+
+.chat
+  .header
+    .left-header
+ 
+      .left-header__title
+        title
+      .left-header__members
+        
+        .member
+          member
+
+    .right-header
+      .right-header__button
+        = link_to "edit"
+
+  .messages
+    .message
+      .upper-message
+        .upper-message__user-name
+          aaa
+        .upper-message__date
+          aaaaa
+      .lower-message
+        .lower-message__content  
+          aaaaaaa
+
+  %form.form
+    %input.form__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+
+    .form__mask
+      %input{:type => "hidden"}
+      %lavel.form__mask__image{:for => "message_image"}
         %i.fa.fa-image
-      %input.chat-main__form__input__text{class:  ".chat-main__form__input__text", name:  "message[content]", placeholder: "type a message", type: "text"}/
+        %input#message_image.hidden{:name => "message[image]",:type => "file"}/
+    %input.form__submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+
+
+     
+
+    
+

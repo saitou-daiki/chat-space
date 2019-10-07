@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   def index
-    messages = Messages.include(:group)
   end
   def create
     messages.create(messages_params)
