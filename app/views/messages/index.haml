@@ -1,65 +1,27 @@
- 
--# .flash-box
--#   チャットグループを作成しました
-
-.side-bar
-  .header
-    %h3.header__name
-      = current_user.name
-    %u.header__lists
-      %i.list
-        = link_to new_group_path do
-          = fa_icon 'pencil-square-o', class: 'icon'
-      %i.icon
-        = link_to edit_user_path(current_user) do
-          = fa_icon 'cog', class: 'icon'
-     
-  .groups
-    .group
-      .group__name
-        グループ名
-      .group__message 
-        新着メッセージ
-
-
-
-
+= render 'shared/side_bar'  
 .chat
   .header
     .left-header
- 
       .left-header__title
-        title
+        = @group.name
       .left-header__members
-        
-        .member
-          member
-
+        Member :
+        - @group.users.each do |user|
+          = user.name
+  
     .right-header
       .right-header__button
-        = link_to "edit"
-
+        = link_to "edit",edit_group_path(@group)
   .messages
-    .message
-      .upper-message
-        .upper-message__user-name
-          aaa
-        .upper-message__date
-          aaaaa
-      .lower-message
-        .lower-message__content  
-          aaaaaaa
-
-  %form.form
-    %input.form__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-
-    .form__mask
-      %input{:type => "hidden"}
-      %lavel.form__mask__image{:for => "message_image"}
-        %i.fa.fa-image
-        %input#message_image.hidden{:name => "message[image]",:type => "file"}/
-    %input.form__submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
-
+    = render partial: 'message', collection: @messages, as: :message
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
 
      
 
