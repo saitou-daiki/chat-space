@@ -5,26 +5,23 @@ $(function(){
     var image =  message.image ? `<img src="${message.image}">` : image = " ";
 
     var html = `<div class="message">
-    <div class="upper-message">
-    <div class="upper-message__user-name">
-    ${message.name}
-    </div>
-    <div class="upper-message__date">
-    ${message.created_at}
-    </div>
-    </div>
-
-    <div class="lower-message">
-    <p class="lower-message__content">
-    ${message.content}
-    </p>
-    </div>
-
-    <img class="lower-message__image" src="">
-    ${image}
-    
-    </div>`
-    return html;
+                  <div class="upper-message">
+                    <div class="upper-message__user-name">
+                      ${message.name}
+                    </div>
+                    <div class="upper-message__date">
+                    ${message.created_at}
+                    </div>
+                  </div>
+                  <div class="lower-message">
+                    <p class="lower-message__content">
+                      ${message.content}
+                    </p>
+                  </div>
+                  <img class="lower-message__image" src="">
+                    ${image}
+                </div>`
+                return html;
   }
 
 
@@ -48,13 +45,12 @@ $(function(){
       $('.messages').animate({
         scrollTop: $('.messages')[0].scrollHeight});
      })
-     
+
      .always(() =>{
       $(".form__submit").removeAttr("disabled")
       })
      .fail(function(){
-      console.log("no")
-
+      alert('メッセージの送信に失敗しました');
      })
   })
 })
