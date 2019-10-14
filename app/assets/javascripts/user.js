@@ -20,11 +20,11 @@ $(document).on('turbolinks:load', function(){
   }
   function appendMembers(name, user_id){
       var html =
-      `<div class='chat-group-user'>
-<input name='group[user_ids][]' type='hidden' value=${user_id}>
-<p class='chat-group-user__name'>${name}</p>
-<a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
-</div>`
+                  `<div class='chat-group-user'>
+                    <input name='group[user_ids][]' type='hidden' value=${user_id}>
+                      <p class='chat-group-user__name'>${name}</p>
+                      <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+                    </div>`
                   member_list.append(html);
   }
 $('#user-search-field').on('keyup', function(e){
@@ -61,9 +61,9 @@ $(function(){
     var user_id = $(this).data("user-id");
     $(this).parent().remove();
     appendMembers(name, user_id);
+    });
+    $(document).on("click", '.user-search-remove', function() {
+      $(this).parent().remove();
+    });
   });
-  $(document).on("click", '.user-search-remove', function() {
-    $(this).parent().remove();
-  });
-});
 });
