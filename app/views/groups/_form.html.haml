@@ -24,6 +24,7 @@
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :user_ids, "チャットメンバー", class: 'chat-group-form__label'
+      
     .chat-group-form__field--right
       #chat-group-users
         - @group.users.each do |user|
