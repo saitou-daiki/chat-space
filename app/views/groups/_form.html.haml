@@ -5,34 +5,24 @@
       %ul
         - group.errors.full_messages.each do |message|
           %li= message
-<<<<<<< Updated upstream
 
-=======
+
+
           
->>>>>>> Stashed changes
+
   .chat-group-form__field
     .chat-group-form__field--left
       = f.label :name, class: 'chat-group-form__label'
     .chat-group-form__field--right
       = f.text_field :name, class: 'chat__group_name chat-group-form__input', placeholder: 'グループ名を入力してください'
-<<<<<<< Updated upstream
  
   .chat-group-form__field
     .chat-group-form__field--left
       = f.label :users, "チャットメンバーを追加", class: "chat-group-form__label", for: "user-search-field"
 
-=======
-
-  -# .chat-group-form__field.clearfix
-    / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
-  .chat-group-form__field
-    .chat-group-form__field--left
-      = f.label :users, "チャットメンバーを追加", class: 'chat-group-form__label', for:'user-search-field'
-
     
       / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
       -# = f.collection_check_boxes :user_ids, User.all, :id, :name
->>>>>>> Stashed changes
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
         = f.text_field :users, id: 'user-search-field', class: 'chat-group-form__input', value: '', placeholder: '追加したいユーザー名を入力してください'
@@ -41,16 +31,11 @@
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :user_ids, "チャットメンバー", class: 'chat-group-form__label'
-<<<<<<< Updated upstream
       
-=======
-
->>>>>>> Stashed changes
     .chat-group-form__field--right
       #chat-group-users
         - @group.users.each do |user|
           .chat-group-user.clearfix.js-chat-member
-<<<<<<< Updated upstream
             = f.hidden_field :user_id, name: "group[user_ids][]", type: "hidden", value: current_user.id
             %p.chat-group-user__name
               = user.name
@@ -59,19 +44,7 @@
               %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn
                 削除
         #member-search_result
-=======
-            %input{name: 'group[user_ids][]', type: 'hidden', value: "#{ user.id }"}
-            %p.chat-group-user__name
-              = user.name
-            - if user.name == current_user.name
 
-            - else
-              %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 
-                削除
-        
-        #member-search_result
-      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
->>>>>>> Stashed changes
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
