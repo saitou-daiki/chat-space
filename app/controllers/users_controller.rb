@@ -1,11 +1,4 @@
 class UsersController < ApplicationController
-<<<<<<< Updated upstream
-  def index
-    @users = User.where('name LIKE(?)',"%#{params[:keyword]}%").where.not(id: current_user.id)
-    render json: @users
-=======
-
- 
 
   def index
     # @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%" ,current_user)
@@ -15,7 +8,6 @@ class UsersController < ApplicationController
 
   def edit
 
->>>>>>> Stashed changes
   end
 
   def edit
@@ -32,8 +24,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email)
   end
-<<<<<<< Updated upstream
+
  end
-=======
 end
->>>>>>> Stashed changes
