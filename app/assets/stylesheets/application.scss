@@ -1,4 +1,6 @@
-@import "reset";
+
+
+@import "config/colors";
 @import "modules/chat";
 @import "modules/side_bar";
 
@@ -7,7 +9,6 @@
 @import "font-awesome";
 
 
-@import "config/colors";
 
 @import "modules/flash";
 @import "modules/group";
@@ -15,3 +16,4 @@
 
 
 @import "modules/flash";
+@import "./reset";

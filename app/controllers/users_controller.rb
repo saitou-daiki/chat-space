@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @users = User.where('name LIKE(?)',"%#{params[:keyword]}%").where.not(id: current_user.id)
     render json: @users
   end
+
   def edit
   end
   def update
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
   private
   def user_params
     params.require(:user).permit(:name, :email)
