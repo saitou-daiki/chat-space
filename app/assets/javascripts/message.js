@@ -50,94 +50,64 @@ $(function(){
      .fail(function(){
       alert('メッセージの送信に失敗しました');
      })
-
-
-
-//      var reloadMessages = function() {
-//       //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-//       last_message_id = ※※※
-//       $.ajax({
-//         //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
-//         url: ※※※,
-//         //ルーティングで設定した通りhttpメソッドをgetに指定
-//         type: 'get',
-//         dataType: 'json',
-//         //dataオプションでリクエストに値を含める
-//         data: {id: last_message_id}
-//       })
-//       .done(function(messages) {
-//         console.log('success');
-//       })
-//       .fail(function() {
-//         console.log('error');
-//       });
-//     };
-
-
-
-//     //省略
-//   var buildMessageHTML = function(message) {
-//     if (message.content && message.image.url) {
-//       //data-idが反映されるようにしている
-//       var html = '<div class="message" data-id=' + message.id + '>' +
-//         '<div class="upper-message">' +
-//           '<div class="upper-message__user-name">' +
-//             message.user_name +
-//           '</div>' +
-//           '<div class="upper-message__date">' +
-//             message.created_at +
-//           '</div>' +
-//         '</div>' +
-//         '<div class="lower-message">' +
-//           '<p class="lower-message__content">' +
-//             message.content +
-//           '</p>' +
-//           '<img src="' + message.image.url + '" class="lower-message__image" >' +
-//         '</div>' +
-//       '</div>'
-//     } else if (message.content) {
-//       //同様に、data-idが反映されるようにしている
-//       var html = '<div class="message" data-id=' + message.id + '>' +
-//         '<div class="upper-message">' +
-//           '<div class="upper-message__user-name">' +
-//             message.user_name +
-//           '</div>' +
-//           '<div class="upper-message__date">' +
-//             message.created_at +
-//           '</div>' +
-//         '</div>' +
-//         '<div class="lower-message">' +
-//           '<p class="lower-message__content">' +
-//             message.content +
-//           '</p>' +
-//         '</div>' +
-//       '</div>'
-//     } else if (message.image.url) {
-//       //同様に、data-idが反映されるようにしている
-//       var html = '<div class="message" data-id=' + message.id + '>' +
-//         '<div class="upper-message">' +
-//           '<div class="upper-message__user-name">' +
-//             message.user_name +
-//           '</div>' +
-//           '<div class="upper-message__date">' +
-//             message.created_at +
-//           '</div>' +
-//         '</div>' +
-//         '<div class="lower-message">' +
-//           '<img src="' + message.image.url + '" class="lower-message__image" >' +
-//         '</div>' +
-//       '</div>'
-//     };
-//     return html;
-//   };
-// //省略
-
-// //途中省略
-//   //$(function(){});の閉じタグの直上(処理の最後)に以下のように追記
-// setInterval(reloadMessages, 5000);
-
-//   //animate関数を利用する。
-
-
   })
-})
+
+  $(function () {
+
+    function buildHTML(message) {
+  
+    
+      var image = message.image ? `<img class= "lower-message__image" src=${message.image} >` : " "; //三項演算子を使ってmessage.imageにtrueならHTML要素、faiseなら空の値を代入。
+  
+      var html = `<div class="message" data-message-id="${message.id}"> 
+            <div class="upper-message">
+              <div class="upper-message__user-name">
+                ${message.user_name}
+              </div>
+              <div class="upper-message__date">
+                ${message.created_at}
+              </div>
+            </div>
+            <div class="lower-meesage">
+              <p class="lower-message__content">
+                ${message.content}
+              </p>
+              ${image}
+            </div>
+          </div>`
+      return html;
+    }
+
+    
+//自動更新はここから
+     var reloadMessages = function() {
+      if (window.location.href.match(/\/groups\/\d+\/messages/)){
+        var last_message_id = $('.message:last').data('message-id');
+
+      $.ajax({
+        //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
+        url: "api/messages",
+        //ルーティングで設定した通りhttpメソッドをgetに指定
+        type: 'GET',
+        dataType: 'json',
+        data: {last_id: last_message_id}
+        //dataオプションでリクエストに値を含める
+        
+      })
+
+      .done(function(messages) {
+        var insertHTML = '';
+          messages.forEach(function(message){
+            insertHTML = buildHTML(message);
+            $('.messages').append(insertHTML);
+          })
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');      
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+       });
+    }
+  };
+  setInterval(reloadMessages, 5000);
+  });
+});
